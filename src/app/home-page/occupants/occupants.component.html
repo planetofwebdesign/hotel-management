@@ -1,0 +1,27 @@
+<div class="main-table" *ngIf="selectedRooms">
+  <table>
+    <tr *ngFor="let room of rooms; let i = index">
+      <td>
+        <div class="table-content">
+          <div class="form-group">
+            <select name="adult" id="adult" class="form-control" #adult (change)="changeValue('adults',i,adult.value)">
+              <option selected disabled [ngValue]=""> Select Adults </option>
+              <option *ngFor="let adult of adults" [ngValue]="adult">{{adult}}</option>
+            </select>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="table-content">
+          <div class="form-group">
+            <select name="child" id="child" class="form-control" #child (change)="changeValue('children',i,child.value)">
+              <option selected disabled [ngValue]=""> Select Children </option>
+              <option *ngFor="let child of children" [ngValue]="child">{{child}}</option>
+            </select>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <button type="button" class="btn btn-primary" (click)="checkAvailability()"> Check Availability</button>
+</div>

@@ -1,0 +1,11 @@
+<div class="room">
+  <div class="form-group">
+  <label for="rooms">Select Rooms</label>
+  <select name="rooms" id="rooms" class="form-control" [(ngModel)]="selectedRooms" >
+    <option *ngFor="let room of rooms" [ngValue]="room">{{room}}</option>
+  </select>
+</div>
+</div>
+<div class="occupants">
+  <app-occupants [selectedRooms]="selectedRooms"></app-occupants>
+</div>
