@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Person</th>
+                                <th>Occupation</th>
+                                <th>City</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of data; let i=index">
+                                <td>
+                                    <select [compareWith]="compareFn" class="form-control" [(ngModel)]="data[i].person">
+                                            <option [ngValue]="null" disabled > Select Person</option>
+                                            <option *ngFor="let person of persons" [ngValue]="person" >{{person.name}}</option>
+                                        </select>
+                                </td>
+
+                                <td>
+                                    <select [compareWith]="compareFn" class="form-control" [(ngModel)]="data[i].occupation">
+                                            <option [ngValue]="null" disabled> Select Occupation </option>
+                                            <option *ngFor="let occupation of occupations" [ngValue]="occupation" >{{occupation.name}}</option>
+                                        </select>
+                                </td>
+
+                                <td>
+                                    <select [compareWith]="compareFn" class="form-control" [(ngModel)]="data[i].city">
+                                              <option [ngValue]="null" disabled> Select City</option>
+                                            <option *ngFor="let city of cities" [ngValue]="city" >{{city.name}}</option>
+                                        </select>
+                                </td>
+                                <td><i class="fa fa-trash-o fa-lg" aria-hidden="true" (click)="removeRow(i)"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="form-group">
+                        <!--<input type="button" class="btn btn-danger pull-right" value="Remove">-->
+                        <input type="submit" class="btn btn-primary  pull-right" value="Add New" (click)="addRow()">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <pre>{{ data | json }}</pre>
+        </div>
+    </div>
+</div>
