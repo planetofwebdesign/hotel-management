@@ -18,7 +18,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
     cities: ICity[];
     @Input()
     data: DataModel[];;
-    propagateChange = (_: any) => {};
+
 
     constructor(
         private dynamicTableService: DynamicTableService
@@ -26,7 +26,7 @@ export class DynamicTableComponent implements OnInit, OnChanges {
 
     }
 
-    ngOnChanges(changes: any): void {
+    ngOnChanges(): void {
         this.persons = this.dynamicTableService.getPersons();
         this.occupations = this.dynamicTableService.getOccupations();
         this.cities = this.dynamicTableService.getCities();
